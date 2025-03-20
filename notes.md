@@ -66,3 +66,6 @@
 - Graph Optimization: converts PyTorch's dynamic computation graph (eager execution) into a static computation graph and performs various optimizations.
 - Backend Acceleration: supports multiple backends (e.g., TorchScript, NVFuser, XLA) and automatically selects the optimal backend for the hardware. 
 - Reduced Python Overhead: PyTorch's dynamic graph relies on the Python interpreter, while `torch.compile` compiles the model's computation logic into efficient low-level code, minimizing Python interpreter overhead.
+
+### 11. **Flash Attention**
+Flash Attention is an optimized algorithm for computing attention in Transformer models. It reduces the memory and computational complexity of standard attention from O(n²) to O(n log n) or O(n) by leveraging techniques like tiling (processing data in smaller blocks) and recomputation (recalculating attention on-the-fly instead of storing large intermediate matrices). This makes it highly efficient for training large language models, especially on memory-constrained hardware like GPUs.
