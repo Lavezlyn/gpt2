@@ -51,6 +51,7 @@
   - Runs for 50 iterations, printing the loss at each step.
   - Utilizes GPU if available, otherwise defaults to CPU.
   - The choice of optimizer (AdamW) is critical for training stability and convergence, especially in large models, due to its ability to handle sparse gradients and apply weight decay correctly.
+  - Set matrix multiplication precision through `torch.set_float32_matmul_precision('high')`
 
 ### 9. **Device Configuration**
 - **Purpose**: Determines the computing device (CPU, CUDA, or MPS) for model training.
@@ -58,3 +59,4 @@
   - Checks for CUDA and MPS availability and sets the device accordingly.
   - Seeds the random number generator for reproducibility.
   - Ensuring reproducibility through seeding is vital for debugging and comparing model performance across different runs.
+  - Synchronize CUDA through `torch.cuda.synchronize()`
