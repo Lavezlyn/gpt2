@@ -236,7 +236,8 @@ for i in range(50):
     x, y = train_loader.next_batch()
     x, y = x.to(device), y.to(device)
     optimizer.zero_grad()
-    logits, loss = model(x, y)
+    with torch.autocast(device_type=device, dtype=torch.bfloat16):
+         logits, loss = model(x, y)
     loss.backward()
     optimizer.step()
     # wait for all operations to complete
