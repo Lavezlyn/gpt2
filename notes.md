@@ -61,3 +61,8 @@
   - Seeds the random number generator for reproducibility.
   - Ensuring reproducibility through seeding is vital for debugging and comparing model performance across different runs.
   - Synchronize CUDA through `torch.cuda.synchronize()`
+  
+### 10. **Torch Compile**
+- Graph Optimization: converts PyTorch's dynamic computation graph (eager execution) into a static computation graph and performs various optimizations.
+- Backend Acceleration: supports multiple backends (e.g., TorchScript, NVFuser, XLA) and automatically selects the optimal backend for the hardware. 
+- Reduced Python Overhead: PyTorch's dynamic graph relies on the Python interpreter, while `torch.compile` compiles the model's computation logic into efficient low-level code, minimizing Python interpreter overhead.
