@@ -87,3 +87,9 @@ Gradient accumulation is a technique where you split a large batch into smaller 
 - Maintains reference to raw model for parameter access
 - DDP handles gradient synchronization automatically
 - Only synchronizes on final micro-batch to reduce communication overhead
+  
+### 15. **Dataset**
+- Source: HuggingFace dataset "HuggingFaceFW/fineweb-edu"****
+- Variant: "sample-10BT" (10 Billion Tokens sample)
+- Purpose: Educational content for pre-training
+- Preprocessing: Tokenization setup -> Sharding strategy -> document processing -> Train/val split
