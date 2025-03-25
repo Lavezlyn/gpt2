@@ -223,7 +223,7 @@ model.to(device)
 model = torch.compile(model)
 
 # optimization
-optimizer = torch.optim.AdamW(model.parameters(), lr=3e-4)
+optimizer = torch.optim.AdamW(model.parameters(), lr=3e-4, betas=(0.9, 0.95), eps=1e-8)
 for i in range(50):
     x, y = train_loader.next_batch()
     x, y = x.to(device), y.to(device)
@@ -231,6 +231,7 @@ for i in range(50):
     with torch.autocast(device_type=device, dtype=torch.bfloat16):
          logits, loss = model(x, y)
     loss.backward()
+    norm = torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
     optimizer.step()
-    print(f"step {i}, loss: {loss.item()}")
+    print(f"step {i}, loss: {loss.item()}, norm: {norm.item()}")
 
