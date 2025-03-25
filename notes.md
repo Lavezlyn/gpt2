@@ -69,3 +69,6 @@
 
 ### 11. **Flash Attention**
 Flash Attention is an optimized algorithm for computing attention in Transformer models. It reduces the memory and computational complexity of standard attention from O(n²) to O(n log n) or O(n) by leveraging techniques like tiling (processing data in smaller blocks) and recomputation (recalculating attention on-the-fly instead of storing large intermediate matrices). This makes it highly efficient for training large language models, especially on memory-constrained hardware like GPUs.
+
+### 12. **Optimizer Configuration**
+Weight decay is a regularization technique that helps prevent overfitting by adding a penalty term to the loss function that discourages large weights. Regular Adam applies weight decay as part of the gradient, which can interact poorly with the adaptive learning rates. The fused implementation check shows attention to performance optimization. Fused operations can significantly speed up training on GPU by reducing memory operations
