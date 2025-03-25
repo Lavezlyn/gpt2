@@ -72,3 +72,18 @@ Flash Attention is an optimized algorithm for computing attention in Transformer
 
 ### 12. **Optimizer Configuration**
 Weight decay is a regularization technique that helps prevent overfitting by adding a penalty term to the loss function that discourages large weights. Regular Adam applies weight decay as part of the gradient, which can interact poorly with the adaptive learning rates. The fused implementation check shows attention to performance optimization. Fused operations can significantly speed up training on GPU by reducing memory operations
+
+### 13. **Gradient Accumulation**
+Gradient accumulation is a technique where you split a large batch into smaller micro-batches, accumulate gradients over these micro-batches, and then perform a single optimizer step. This allows you to effectively train with larger batch sizes than would fit in GPU memory.
+
+### 14. **Data Parallel**
+- Each process gets a different slice of the data
+- Prevents data overlap between processes
+- Ensures each process sees different training examples
+- Total batch size is divided among processes
+- Gradient accumulation steps adjusted for multi-process training
+- Ensures even division of work across processes
+- Model wrapped in DistributedDataParallel
+- Maintains reference to raw model for parameter access
+- DDP handles gradient synchronization automatically
+- Only synchronizes on final micro-batch to reduce communication overhead
